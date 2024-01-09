@@ -10,7 +10,7 @@
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg  max-w-2xl w-[80%] mx-auto">
                 <div class="p-6 space-y-4 text-gray-900 dark:text-gray-100">
                     <x-button icon="arrow-left" class="mb-8" href="{{route('notes.index')}}">All Notes</x-button>
-                    <livewire:notes.create-notes />
+                    <livewire:notes.create />
                 </div>
             </div>
         </div>

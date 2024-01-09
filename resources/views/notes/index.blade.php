@@ -9,7 +9,7 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mx-auto overflow-hidden dark:bg-gray-800">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <livewire:notes.show-notes />
+                    <livewire:notes.show />
                 </div>
             </div>
         </div>
