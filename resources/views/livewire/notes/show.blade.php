@@ -32,17 +32,17 @@ new class extends Component {
             </div>
         @else
             <x-button primary icon-right="plus" class="mt-6 mb-12" href="{{route('notes.create')}}" wire:navigate>Create note</x-button>
-            <div class="grid grid-cols-3 gap-4 mt-12">
+            <div class="grid grid-cols-3 mt-12">
                 @foreach ($notes as $note)
                     <x-card wire:key='{{$note -> id}}' >
                         <div class="flex justify-between gap-2">
-                            <div >
-                                <a href="{{route('notes.edit', $note)}}" wire:navigate class="text-xl font-bold hover:underline hover:text-blue-500">
+                            <div>
+                                <a href="{{ route('notes.edit', $note) }}" wire:navigate class="text-xl font-bold hover:underline hover:text-blue-500">
                                     {{$note->title}}
                                 </a>
                                 <p class="mt-2 text-xs">{{Str::limit($note->body, 50)}}</p>
                             </div>
-                            <div class="text-xs text-gray-500 text-pretty lg:text-nowrap lg:w-full w-">
+                            <div class="text-xs text-gray-500 text-pretty lg:text-nowrap ">
                                 {{\Carbon\Carbon::parse($note->send_date)->format("d-M-Y")}}
                             </div>
                         </div>

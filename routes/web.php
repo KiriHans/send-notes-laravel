@@ -32,7 +32,7 @@ Route::view('notes/create', 'notes.create')
     ->middleware(['auth'])
     ->name('notes.create');
 
-Volt::route('notes/{notes}/edit', 'notes.edit')
+Volt::route('notes/{note}/edit', 'notes.edit')
     ->middleware(['auth'])
     ->name('notes.edit');
 
