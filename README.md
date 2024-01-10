@@ -16,7 +16,38 @@ You can edit, delete, and view the notes.
 
 Copy and change the name of `.env.example` to `.env` changing their respective environment variables.
 
-If you are in windows, you can use docker.
+If you are in Windows, you can use docker and Laravel Sail.
+
+For starters, clone the repository, and using a terminal write:
+```bash
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php83-composer:latest \
+    composer install --ignore-platform-reqs
+```
+When using the laravelsail/phpXX-composer image, you should use the same version of PHP that you plan to use for your application (80, 81, 82, or 83).
+
+Source: [Installing Composer Dependencies for Existing Applications](https://laravel.com/docs/10.x/sail#installing-composer-dependencies-for-existing-projects)
+
+It is recommended to configure a shell alias that allows you to execute Sail's commands more easily. 
+Add the command `alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'` to your shell configuration file in your home directory (`~/.zshrc` or `~/.bashrc`).
+
+Source: [Configuring A Shell Alias](https://laravel.com/docs/10.x/sail#configuring-a-shell-alias)
+
+Next, make another copy of `.env.example` and rename it to `.env`. Change the env variables that you need.  
+
+
+To inicialize your development server, first use the command `sail up` (or `./vendor/bin/sail up` if you haven't configured the alias) to start all of the Docker containers defined in your application's `docker-compose.yml` file.
+
+Next up, use the command `sail npm install` to install all the necessary npm packages to run your server.
+
+Run `sail npm run dev` to start your webpage, and use `sail php artisan migrate` to run your migrations for the database.
+
+After you finish and stop all of the containers, you may simply press Control + C to stop the container's execution. Or, if the containers are running in the background, you may use the command `sail stop`.
+
+Source: [Starting and Stopping Sail](https://laravel.com/docs/10.x/sail#starting-and-stopping-sail)
 
 ## About Laravel
 
