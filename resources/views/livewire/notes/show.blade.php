@@ -1,9 +1,13 @@
 <?php
+use Livewire\WithPagination;
 
 use Livewire\Volt\Component;
+
 use App\Models\Note;
 
 new class extends Component {
+
+    use WithPagination;
 
     public function delete($noteId) : void {
         $note = Note::where('id', $noteId)->first();
@@ -17,7 +21,8 @@ new class extends Component {
             'notes' => Auth::user()
                 ->notes()
                 ->orderBy('send_date', 'asc')
-                ->get(),
+                ->paginate(9),
+                
         ];
     }
 }; ?>
@@ -62,6 +67,10 @@ new class extends Component {
                 </div>
             </x-card>
             @endforeach
+            
+        </div>
+        <div class="mt-10">
+            {{ $notes->links(data: ['scrollTo' => false]) }}
         </div>
         @endif
     </div>
