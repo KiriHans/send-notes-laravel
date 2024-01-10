@@ -7,6 +7,17 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## About the project
+
+This is a demo project developed as a way to familiarize with the laravel framework, where you send scheduled notes to your family and friends.
+You can edit, delete, and view the notes.
+
+## How to use it
+
+Copy and change the name of `.env.example` to `.env` changing their respective environment variables.
+
+If you are in windows, you can use docker.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
