@@ -44,10 +44,14 @@ new class extends Component {
             <x-card wire:key='{{$note -> id}}' class="flex flex-col justify-around">
                 <div class="flex justify-between gap-2">
                     <div>
-                        <a href="{{ route('notes.edit', $note) }}" wire:navigate
-                            class="text-xl font-bold hover:underline hover:text-blue-500">
-                            {{$note->title}}
-                        </a>
+                        @can('update', $note)
+                            <a href="{{ route('notes.edit', $note) }}" wire:navigate
+                                class="text-xl font-bold hover:underline hover:text-blue-500">
+                                {{$note->title}}
+                            </a>
+                        @else
+                            <p class="text-xl font-bold text-gray-500">{{ $note->title }}</p>
+                        @endcan
                         <p class="mt-2 text-xs">{{Str::limit($note->body, 50)}}</p>
                     </div>
                     <div class="text-xs text-gray-500 text-pretty lg:text-nowrap ">
@@ -59,15 +63,13 @@ new class extends Component {
                         </span>
                     </p>
                     <div>
-                        <x-button.circle icon="eye">
-                            </x-button>
-                            <x-button.circle icon="trash" wire:click="delete('{{$note->id}}')">
-                                </x-button>
+                        <x-button.circle icon="eye" href="{{route('notes.view', $note)}}"></x-button>
+                        <x-button.circle icon="trash" wire:click="delete('{{$note->id}}')"></x-button>
                     </div>
                 </div>
             </x-card>
             @endforeach
-            
+
         </div>
         <div class="mt-10">
             {{ $notes->links(data: ['scrollTo' => false]) }}
