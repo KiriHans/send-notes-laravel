@@ -36,7 +36,7 @@ Add the command `alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'` to y
 
 Source: [Configuring A Shell Alias](https://laravel.com/docs/10.x/sail#configuring-a-shell-alias)
 
-To inicialize your development server, first use the command `sail up` (or `./vendor/bin/sail up` if you haven't configured the alias) to start all of the Docker containers defined in your application's `docker-compose.yml` file.
+To initialize your development server, first use the command `sail up` (or `./vendor/bin/sail up` if you haven't configured the alias) to start all of the Docker containers defined in your application's `docker-compose.yml` file.
 
 Next up, use the command `sail npm install` to install all the necessary npm packages to run your server.
 
